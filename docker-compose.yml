@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  proxy:
+    build:
+      context: ./proxy
+    depends_on:
+      - client
+      - server
+    ports:
+      - 3000:3000
+      
+  client:
+    build:
+      context: ./client
+    volumes:
+      - ./client/src:/src
+    
+  server:
+    build:
+      context: ./server
